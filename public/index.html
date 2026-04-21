@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyledFoundations.site | Home Decor Services & Guides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-bg: #F2EFEA;
+            --primary-text: #2B2B2B;
+            --accent-color: #B78E74;
+            --pastel-shadow: rgba(183, 142, 116, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary-text);
+            background-color: var(--primary-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary-text), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-text), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-text);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--pastel-shadow);
+        }
+        
+        /* Background decorative gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(183, 142, 116, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(43, 43, 43, 0.05) 0%, transparent 20%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Floating Logo */
+        .logo {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-text);
+            padding: 10px 15px;
+            background-color: rgba(242, 239, 234, 0.9);
+            border-radius: 0 15px 15px 15px;
+            box-shadow: 0 5px 15px var(--pastel-shadow);
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Sidebar/Experimental Navigation */
+        .sidebar-nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--primary-bg);
+            box-shadow: -5px 0 25px rgba(43, 43, 43, 0.1);
+            z-index: 999;
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 80px 30px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-nav.active {
+            right: 0;
+        }
+        
+        .nav-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1001;
+            background-color: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px var(--pastel-shadow);
+            transition: var(--transition);
+        }
+        
+        .nav-toggle:hover {
+            transform: rotate(90deg);
+        }
+        
+        .nav-links {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .nav-links li {
+            margin-bottom: 20px;
+        }
+        
+        .nav-links a {
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 10px 0 10px 10px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(183, 142, 116, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .nav-links a.active {
+            background-color: rgba(183, 142, 116, 0.2);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        /* Page content */
+        .page-content {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Rotated image containers */
+        .rotated-img-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 20px;
+            transform: rotate(3deg);
+            box-shadow: 0 15px 30px var(--pastel-shadow);
+            margin: 30px 0;
+        }
+        
+        .rotated-img-container.left {
+            transform: rotate(-3deg);
+        }
+        
+        .rotated-img-container.right {
+            transform: rotate(5deg);
+        }
+
+        .rotated-img-container.kitchen-double {
+            height: 600px;
+        }
+        
+        .rotated-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .rotated-img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Cards with asymmetric border radii */
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 40px 20px 30px 10px;
+            box-shadow: 0 10px 25px var(--pastel-shadow);
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--pastel-shadow);
+        }
+        
+        .card.asymmetric-1 {
+            border-radius: 10px 40px 20px 30px;
+        }
+        
+        .card.asymmetric-2 {
+            border-radius: 30px 10px 40px 20px;
+        }
+        
+        .card.asymmetric-3 {
+            border-radius: 20px 30px 10px 40px;
+        }
+        
+        /* Grid layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        /* Home page specific */
+        .hero-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero-grid {
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            min-height: 560px;
+            display: grid;
+            place-items: center;
+            padding: 90px 24px;
+            border-radius: 0;
+            background-image:
+                linear-gradient(125deg, rgba(43, 43, 43, 0.58), rgba(43, 43, 43, 0.28)),
+                url('assets/omage/bedroom.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .hero-grid-content {
+            max-width: 840px;
+            padding: 36px 28px;
+            background-color: rgba(0, 0, 0, 0.22);
+            border-radius: 20px;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-section h1 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero-lead {
+            max-width: 800px;
+            font-size: 1.2rem;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.92);
+        }
+        
+        /* Service cards */
+        .service-card {
+            text-align: center;
+            padding: 40px 25px;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        /* Blog cards */
+        .blog-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .blog-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Contact form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(43, 43, 43, 0.2);
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(183, 142, 116, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-text);
+            color: var(--primary-bg);
+            padding: 50px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            margin: 0 15px 10px;
+            color: rgba(242, 239, 234, 0.8);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            color: rgba(242, 239, 234, 0.6);
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(242, 239, 234, 0.2);
+        }
+        
+        /* Cookie Popup */
+        .cookie-popup {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 25px;
+            box-shadow: 0 -5px 20px rgba(43, 43, 43, 0.1);
+            z-index: 1002;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .cookie-popup.active {
+            transform: translateY(0);
+        }
+        
+        .cookie-content {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 20px;
+        }
+        
+        .cookie-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .cookie-btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .cookie-btn.accept {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+        
+        .cookie-btn.decline {
+            background-color: transparent;
+            color: var(--primary-text);
+            border: 1px solid rgba(43, 43, 43, 0.3);
+        }
+        
+        .cookie-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--pastel-shadow);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                top: 20px;
+                left: 20px;
+                font-size: 1.5rem;
+            }
+            
+            .nav-toggle {
+                top: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .sidebar-nav {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .cookie-popup {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-content {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .hero-grid {
+                min-height: 430px;
+                padding: 70px 16px;
+            }
+
+            .hero-grid-content {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Logo -->
+    <a href="#" class="logo" data-page="home">StyledFoundations.site</a>
+    
+    <!-- Navigation Toggle -->
+    <div class="nav-toggle" id="navToggle">
+        <span>☰</span>
+    </div>
+    
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar-nav" id="sidebarNav">
+        <ul class="nav-links">
+            <li><a href="#" class="active" data-page="home">Home</a></li>
+            <li><a href="#" data-page="about">About Us</a></li>
+            <li><a href="#" data-page="services">Our Services</a></li>
+            <li><a href="#" data-page="blog">Blog & Guides</a></li>
+            <li><a href="#" data-page="contact">Contact</a></li>
+            <li><a href="#" data-page="privacy">Privacy Policy</a></li>
+            <li><a href="#" data-page="terms">Terms & Conditions</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Cookie Popup -->
+    <div class="cookie-popup" id="cookiePopup">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your browsing experience and analyze site traffic. By clicking "Accept", you consent to our use of cookies. No personal data is collected.</p>
+        </div>
+        <div class="cookie-actions">
+            <button class="cookie-btn accept" id="acceptCookies">Accept</button>
+            <button class="cookie-btn decline" id="declineCookies">Decline</button>
+        </div>
+    </div>
+    
+    <!-- Page Content -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="page-content">
+                <div class="container">
+                    <div class="hero-section hero-grid">
+                        <div class="hero-grid-content">
+                        <h1>Transform Your Space with Elegant Home Decor</h1>
+                        <p class="hero-lead">Discover professional home decor services and expert guides to create beautiful, harmonious living spaces that reflect your personal style and enhance your daily life.</p>
+                        <a href="#" class="btn" data-page="services">Explore Our Services</a>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="card asymmetric-1">
+                            <div class="service-icon">🏠</div>
+                            <h3>Space Planning</h3>
+                            <p>Optimize your living areas with functional layouts that maximize both aesthetics and utility.</p>
+                        </div>
+                        
+                        <div class="card asymmetric-2">
+                            <div class="service-icon">🎨</div>
+                            <h3>Color Consultation</h3>
+                            <p>Select the perfect color palettes that create the desired mood and atmosphere in each room.</p>
+                        </div>
+                        
+                        <div class="card asymmetric-3">
+                            <div class="service-icon">✨</div>
+                            <h3>Styling Services</h3>
+                            <p>Complete styling solutions that bring cohesion and personality to your entire home.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rotated-img-container left kitchen-double">
+                        <img class="rotated-img" src="assets/omage/kitchen.jpg" alt="Warm kitchen decor">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <h2>About StyledFoundations</h2>
+                    <div class="rotated-img-container right">
+                        <img class="rotated-img" src="assets/omage/bedroom-3.jpg" alt="Styled bedroom">
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Our Philosophy</h3>
+                        <p>At StyledFoundations.site, we believe that your home should be a sanctuary that reflects your personality and supports your lifestyle. Our approach combines timeless design principles with modern sensibilities to create spaces that are both beautiful and functional.</p>
+                        <p>We focus on creating harmonious environments through careful consideration of space, light, texture, and color. Our team of experienced decor consultants is dedicated to helping you transform your living spaces without the need for costly renovations or complete overhauls.</p>
+                    </div>
+                    
+                    <div class="card asymmetric-2">
+                        <h3>Our Values</h3>
+                        <p><strong>Personalization:</strong> Every home and homeowner is unique. We tailor our services to your specific needs, preferences, and lifestyle.</p>
+                        <p><strong>Sustainability:</strong> We advocate for mindful consumption and recommend quality pieces that stand the test of time.</p>
+                        <p><strong>Education:</strong> Through our guides and blogs, we empower you with the knowledge to make informed decor decisions.</p>
+                        <p><strong>Accessibility:</strong> Beautiful design should be available to everyone, which is why we focus on services rather than product sales.</p>
+                    </div>
+                    
+                    <div class="rotated-img-container">
+                        <img class="rotated-img" src="assets/omage/sofass.jpg" alt="Modern sofa setup">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Page -->
+        <section id="services" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <h2>Our Home Decor Services</h2>
+                    <p class="container" style="max-width: 800px; margin-bottom: 40px;">We offer a range of professional home decor services designed to transform your living spaces. Each service is tailored to your specific needs and delivered with expert guidance.</p>
+                    
+                    <div class="grid">
+                        <div class="card service-card asymmetric-1">
+                            <div class="service-icon">📐</div>
+                            <h3>Initial Consultation</h3>
+                            <p>A comprehensive assessment of your space, lifestyle needs, and design preferences to create a customized decor plan.</p>
+                        </div>
+                        
+                        <div class="card service-card asymmetric-2">
+                            <div class="service-icon">🎨</div>
+                            <h3>Color Scheme Development</h3>
+                            <p>Expert guidance on selecting color palettes that work with your space, lighting, and personal style.</p>
+                        </div>
+                        
+                        <div class="card service-card asymmetric-3">
+                            <div class="service-icon">🛋️</div>
+                            <h3>Furniture Layout Planning</h3>
+                            <p>Optimize your space with furniture arrangements that enhance flow, function, and visual appeal.</p>
+                        </div>
+                        
+                        <div class="card service-card asymmetric-1">
+                            <div class="service-icon">🖼️</div>
+                            <h3>Art & Accessory Curation</h3>
+                            <p>Guidance on selecting and arranging art, textiles, and accessories to complete your space.</p>
+                        </div>
+                        
+                        <div class="card service-card asymmetric-2">
+                            <div class="service-icon">💡</div>
+                            <h3>Lighting Solutions</h3>
+                            <p>Advice on lighting types, placement, and fixtures to create the perfect ambiance in each room.</p>
+                        </div>
+                        
+                        <div class="card service-card asymmetric-3">
+                            <div class="service-icon">📝</div>
+                            <h3>Follow-Up Sessions</h3>
+                            <p>Ongoing support as you implement your decor plan, with adjustments and refinements as needed.</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 10px;">
+                        <a href="#" class="btn" data-page="contact">More Services</a>
+                    </div>
+                    
+                    <div class="rotated-img-container left">
+                        <img class="rotated-img" src="assets/omage/office.jpeg" alt="Home office styling">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Blog Page -->
+        <section id="blog" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <h2>Decor Guides & Blog</h2>
+                    <p class="container" style="max-width: 800px; margin-bottom: 40px;">Explore our collection of home decor guides, tips, and inspiration to help you create beautiful living spaces.</p>
+                    
+                    <div class="grid">
+                        <div class="card blog-card asymmetric-1">
+                            <h3>5 Principles of Harmonious Room Design</h3>
+                            <div class="blog-meta">Published: March 15, 2023 | Category: Design Principles</div>
+                            <p>Discover the fundamental principles that professional designers use to create balanced, harmonious spaces that feel both intentional and inviting.</p>
+                            <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Read Guide</a>
+                        </div>
+                        
+                        <div class="card blog-card asymmetric-2">
+                            <h3>Maximizing Small Spaces: A Complete Guide</h3>
+                            <div class="blog-meta">Published: February 28, 2023 | Category: Space Optimization</div>
+                            <p>Learn how to make the most of limited square footage with smart furniture choices, color strategies, and layout techniques.</p>
+                            <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Read Guide</a>
+                        </div>
+                        
+                        <div class="card blog-card asymmetric-3">
+                            <h3>The Psychology of Color in Home Decor</h3>
+                            <div class="blog-meta">Published: February 10, 2023 | Category: Color Theory</div>
+                            <p>Understand how different colors affect mood and atmosphere, and how to use this knowledge when decorating your home.</p>
+                            <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Read Guide</a>
+                        </div>
+                        
+                        <div class="card blog-card asymmetric-1">
+                            <h3>Seasonal Decor Transitions: Spring Refresh</h3>
+                            <div class="blog-meta">Published: January 25, 2023 | Category: Seasonal Tips</div>
+                            <p>Simple ways to refresh your home for spring without a complete redesign, focusing on textiles, accessories, and natural elements.</p>
+                            <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Read Guide</a>
+                        </div>
+                        
+                        <div class="card blog-card asymmetric-2">
+                            <h3>Creating a Cohesive Home: Room-to-Room Flow</h3>
+                            <div class="blog-meta">Published: January 12, 2023 | Category: Whole Home Design</div>
+                            <p>Techniques for ensuring your entire home feels connected and intentional, creating a seamless experience as you move through spaces.</p>
+                            <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Read Guide</a>
+                        </div>
+                        
+                        <div class="card blog-card asymmetric-3">
+                            <h3>Lighting Layering: Beyond Overhead Fixtures</h3>
+                            <div class="blog-meta">Published: December 20, 2022 | Category: Lighting</div>
+                            <p>A comprehensive guide to creating the perfect lighting scheme by combining ambient, task, and accent lighting throughout your home.</p>
+                            <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Read Guide</a>
+                        </div>
+                    </div>
+                    
+                    <div class="rotated-img-container right">
+                        <img class="rotated-img" src="assets/omage/bathroom-decor.jpg" alt="Bathroom decor details">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <h2>Contact Us</h2>
+                    <div class="rotated-img-container">
+                        <img class="rotated-img" src="assets/omage/mirrors.jpg" alt="Decorative mirrors">
+                    </div>
+                    
+                    <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="card">
+                            <h3>Get in Touch</h3>
+                            <p>Ready to transform your space? Reach out to schedule a consultation or ask questions about our services.</p>
+                            <div style="margin-top: 30px;">
+                                <p><strong>Email:</strong> info@styledfoundations.site</p>
+                                <p><strong>Service Hours:</strong> Monday - Friday, 9 AM - 6 PM</p>
+                                <p><strong>Response Time:</strong> Within 48 hours for initial inquiries</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card asymmetric-2">
+                            <h3>Send a Message</h3>
+                            <form class="contact-form" id="contactForm">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" required>
+                                        <option value="" disabled selected>Select Service Interest</option>
+                                        <option value="consultation">Initial Consultation</option>
+                                        <option value="color">Color Consultation</option>
+                                        <option value="layout">Furniture Layout Planning</option>
+                                        <option value="styling">Complete Styling Service</option>
+                                        <option value="other">Other Inquiry</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Privacy Policy Page -->
+        <section id="privacy" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <h2>Privacy Policy</h2>
+                    
+                    <div class="card">
+                        <h3>Information We Collect</h3>
+                        <p>StyledFoundations.site respects your privacy. We collect information that you provide directly to us when you contact us through our website forms. This may include your name, email address, and any messages you send.</p>
+                    </div>
+                    
+                    <div class="card asymmetric-1">
+                        <h3>How We Use Your Information</h3>
+                        <p>We use the information we collect to respond to your inquiries, provide our services, and improve our website. We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties.</p>
+                    </div>
+                    
+                    <div class="card asymmetric-2">
+                        <h3>Cookies</h3>
+                        <p>Our website may use cookies to enhance user experience. Cookies are small files that a site or its service provider transfers to your computer's hard drive through your web browser (if you allow) that enables the site's systems to recognize your browser and capture certain information.</p>
+                        <p>You can choose to disable cookies through your browser settings. If you disable cookies, some features of our website may not function properly.</p>
+                    </div>
+                    
+                    <div class="card asymmetric-3">
+                        <h3>Third-Party Links</h3>
+                        <p>Our website may contain links to other sites. We are not responsible for the privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the privacy statements of any other site that collects personally identifiable information.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Changes to This Policy</h3>
+                        <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page. You are advised to review this privacy policy periodically for any changes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Terms & Conditions Page -->
+        <section id="terms" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <h2>Terms & Conditions</h2>
+                    
+                    <div class="card">
+                        <h3>Service Agreement</h3>
+                        <p>By using our services, you agree that StyledFoundations.site provides home decor consultation and guidance services. All advice and recommendations are provided as guidance only, and final decisions regarding home decor purchases and implementations are your responsibility.</p>
+                    </div>
+                    
+                    <div class="card asymmetric-1">
+                        <h3>Intellectual Property</h3>
+                        <p>All content on this website, including text, graphics, logos, and images, is the property of StyledFoundations.site and is protected by copyright laws. The content may not be reproduced, distributed, or used without our prior written permission.</p>
+                    </div>
+                    
+                    <div class="card asymmetric-2">
+                        <h3>Disclaimer</h3>
+                        <p>The information on this website is provided for general informational purposes only. While we strive to provide accurate and up-to-date information, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information, products, services, or related graphics contained on the website.</p>
+                    </div>
+                    
+                    <div class="card asymmetric-3">
+                        <h3>Limitation of Liability</h3>
+                        <p>StyledFoundations.site shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the website or services, or any content obtained from the website.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Governing Law</h3>
+                        <p>These terms shall be governed by and construed in accordance with applicable laws, without regard to its conflict of law provisions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#" data-page="home">Home</a>
+                <a href="#" data-page="about">About</a>
+                <a href="#" data-page="services">Services</a>
+                <a href="#" data-page="blog">Blog</a>
+                <a href="#" data-page="contact">Contact</a>
+                <a href="#" data-page="privacy">Privacy Policy</a>
+                <a href="#" data-page="terms">Terms & Conditions</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 StyledFoundations.site. All rights reserved. | Home Decor Services & Guides</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">No products sold, only consultation services provided.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // DOM elements
+        const navToggle = document.getElementById('navToggle');
+        const sidebarNav = document.getElementById('sidebarNav');
+        const cookiePopup = document.getElementById('cookiePopup');
+        const acceptCookies = document.getElementById('acceptCookies');
+        const declineCookies = document.getElementById('declineCookies');
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const logo = document.querySelector('.logo');
+        const footerLinks = document.querySelectorAll('.footer-links a');
+        
+        // Check if cookies have been accepted
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                cookiePopup.classList.add('active');
+            }, 2000);
+        }
+        
+        // Cookie handling
+        acceptCookies.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookiePopup.classList.remove('active');
+        });
+        
+        declineCookies.addEventListener('click', () => {
+            cookiePopup.classList.remove('active');
+        });
+        
+        // Navigation toggle
+        navToggle.addEventListener('click', () => {
+            sidebarNav.classList.toggle('active');
+            navToggle.innerHTML = sidebarNav.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Page navigation function
+        function navigateToPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Close sidebar on mobile
+            if (window.innerWidth <= 768) {
+                sidebarNav.classList.remove('active');
+                navToggle.innerHTML = '☰';
+            }
+        }
+        
+        // Set up navigation event listeners
+        function setupNavigation() {
+            // Any element with data-page (links, buttons, etc.)
+            document.querySelectorAll('[data-page]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = el.getAttribute('data-page');
+                    navigateToPage(pageId);
+                });
+            });
+            
+            // Logo link
+            logo.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateToPage('home');
+            });
+        }
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will respond within 48 hours.');
+                contactForm.reset();
+            });
+        }
+        
+        // Initialize navigation
+        setupNavigation();
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                !sidebarNav.contains(e.target) && 
+                !navToggle.contains(e.target) &&
+                sidebarNav.classList.contains('active')) {
+                sidebarNav.classList.remove('active');
+                navToggle.innerHTML = '☰';
+            }
+        });
+        
+        // Add animation to cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
